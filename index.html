@@ -1,51 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Network - Protect Earth</title>
+    <title>GitHub 完全指南 | 开发者的协作与创新平台</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --github-black: #0d1117;
+            --github-dark: #161b22;
+            --github-darker: #010409;
+            --github-blue: #58a6ff;
+            --github-blue-dark: #1f6feb;
+            --github-green: #238636;
+            --github-green-light: #2ea043;
+            --github-purple: #8957e5;
+            --github-border: #30363d;
+            --github-text: #c9d1d9;
+            --github-text-light: #8b949e;
+            --github-white: #f0f6fc;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary: #2e7d32;
-            --secondary: #4caf50;
-            --accent: #8bc34a;
-            --light: #e8f5e9;
-            --dark: #1b5e20;
-            --text: #333333;
-            --white: #ffffff;
         }
 
         body {
-            background-color: var(--light);
-            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            background-color: var(--github-black);
+            color: var(--github-text);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        header {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: var(--white);
-            padding: 1rem 0;
-            position: sticky;
+        /* 导航栏 */
+        .navbar {
+            background-color: var(--github-dark);
+            border-bottom: 1px solid var(--github-border);
+            position: fixed;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .nav-container {
+            width: 100%;
+            z-index: 1000;
+            padding: 0.8rem 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -54,318 +52,351 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 1.8rem;
-            font-weight: 700;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--github-white);
         }
 
         .logo i {
-            font-size: 2rem;
+            margin-right: 10px;
+            color: var(--github-white);
         }
 
-        nav ul {
+        .nav-links {
             display: flex;
             list-style: none;
         }
 
-        nav ul li {
-            margin-left: 2rem;
+        .nav-links li {
+            margin-left: 1.5rem;
         }
 
-        nav ul li a {
-            color: var(--white);
+        .nav-links a {
+            color: var(--github-text);
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s ease;
+            transition: color 0.2s;
             padding: 0.5rem 0;
             position: relative;
         }
 
-        nav ul li a:hover {
-            color: var(--accent);
+        .nav-links a:hover {
+            color: var(--github-white);
         }
 
-        nav ul li a::after {
+        .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
+            bottom: 0;
+            left: 0;
+            background-color: var(--github-blue);
+            transition: width 0.3s;
         }
 
-        nav ul li a:hover::after {
+        .nav-links a:hover::after {
             width: 100%;
         }
 
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 80vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: var(--white);
+        /* 主容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
+        /* 英雄区域 */
+        .hero {
+            padding: 140px 0 80px;
+            text-align: center;
+            background: linear-gradient(160deg, var(--github-darker) 0%, var(--github-black) 100%);
+            border-bottom: 1px solid var(--github-border);
         }
 
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: var(--github-white);
+            background: linear-gradient(90deg, var(--github-blue), var(--github-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: var(--github-text-light);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
         }
 
         .btn {
-            display: inline-block;
-            background-color: var(--accent);
-            color: var(--white);
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 6px;
             font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.2s;
         }
 
-        .btn:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        .btn-primary {
+            background-color: var(--github-green);
+            color: white;
         }
 
-        section {
+        .btn-primary:hover {
+            background-color: var(--github-green-light);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(46, 160, 67, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: var(--github-dark);
+            color: var(--github-white);
+            border: 1px solid var(--github-border);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--github-blue-dark);
+            border-color: var(--github-blue-dark);
+            transform: translateY(-2px);
+        }
+
+        /* 章节样式 */
+        .section {
             padding: 5rem 0;
+            border-bottom: 1px solid var(--github-border);
         }
 
-        .section-title {
+        .section-header {
             text-align: center;
             margin-bottom: 3rem;
         }
 
-        .section-title h2 {
+        .section-header h2 {
             font-size: 2.5rem;
-            color: var(--primary);
+            color: var(--github-white);
             margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
         }
 
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent);
-            border-radius: 2px;
-        }
-
-        .section-title p {
-            color: var(--text);
+        .section-header p {
+            color: var(--github-text-light);
             max-width: 700px;
             margin: 0 auto;
         }
 
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+        /* 学习路径卡片 */
+        .learning-path {
+            background-color: var(--github-dark);
+            border-radius: 8px;
+            border: 1px solid var(--github-border);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .learning-path:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--github-blue);
+        }
+
+        .path-header {
+            display: flex;
             align-items: center;
+            margin-bottom: 1.5rem;
         }
 
-        .about-img {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        .path-icon {
+            font-size: 2rem;
+            color: var(--github-blue);
+            margin-right: 1rem;
+            background-color: rgba(88, 166, 255, 0.1);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .about-img img {
+        .path-title {
+            font-size: 1.5rem;
+            color: var(--github-white);
+        }
+
+        .path-subtitle {
+            color: var(--github-text-light);
+            font-size: 0.9rem;
+        }
+
+        .path-content {
+            margin-bottom: 1.5rem;
+        }
+
+        .module-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .module-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .module-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--github-green);
+            font-weight: bold;
+        }
+
+        .path-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--github-border);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .badge-beginner {
+            background-color: rgba(88, 166, 255, 0.2);
+            color: var(--github-blue);
+        }
+
+        .badge-intermediate {
+            background-color: rgba(137, 87, 229, 0.2);
+            color: var(--github-purple);
+        }
+
+        .badge-advanced {
+            background-color: rgba(46, 160, 67, 0.2);
+            color: var(--github-green-light);
+        }
+
+        /* 选项卡内容 */
+        .tab-container {
+            margin-top: 2rem;
+        }
+
+        .tab-nav {
+            display: flex;
+            border-bottom: 1px solid var(--github-border);
+            margin-bottom: 2rem;
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            padding: 1rem 1.5rem;
+            background: none;
+            border: none;
+            color: var(--github-text);
+            font-weight: 600;
+            cursor: pointer;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .tab-btn.active {
+            color: var(--github-white);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
             width: 100%;
-            height: auto;
+            height: 2px;
+            background-color: var(--github-blue);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
             display: block;
-            transition: transform 0.5s ease;
+            animation: fadeIn 0.5s;
         }
 
-        .about-img:hover img {
-            transform: scale(1.05);
-        }
-
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-        }
-
-        .stats {
+        /* 资源网格 */
+        .resource-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
-        .stat-item {
-            text-align: center;
-            padding: 2rem 1rem;
-            background-color: var(--white);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
+        .resource-card {
+            background-color: var(--github-dark);
+            border-radius: 8px;
+            border: 1px solid var(--github-border);
+            padding: 1.5rem;
+            transition: all 0.3s;
         }
 
-        .stat-item:hover {
-            transform: translateY(-10px);
+        .resource-card:hover {
+            border-color: var(--github-blue);
+            transform: translateY(-3px);
         }
 
-        .stat-item i {
-            font-size: 2.5rem;
-            color: var(--primary);
+        .resource-icon {
+            font-size: 2rem;
+            color: var(--github-blue);
             margin-bottom: 1rem;
         }
 
-        .stat-item h3 {
-            font-size: 2.5rem;
-            color: var(--dark);
+        .resource-title {
+            font-size: 1.2rem;
+            color: var(--github-white);
             margin-bottom: 0.5rem;
         }
 
-        .stat-item p {
-            color: var(--text);
-        }
-
-        .initiatives {
-            background-color: var(--white);
-        }
-
-        .initiatives-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .initiative-card {
-            background-color: var(--light);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .initiative-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .initiative-img {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .initiative-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .initiative-card:hover .initiative-img img {
-            transform: scale(1.1);
-        }
-
-        .initiative-content {
-            padding: 1.5rem;
-        }
-
-        .initiative-content h3 {
-            font-size: 1.5rem;
+        .resource-desc {
+            color: var(--github-text-light);
+            font-size: 0.9rem;
             margin-bottom: 1rem;
-            color: var(--dark);
         }
 
-        .initiative-content p {
-            margin-bottom: 1.5rem;
-        }
-
-        .cta {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: var(--white);
-            text-align: center;
-            padding: 5rem 0;
-        }
-
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta .btn {
-            background-color: var(--white);
-            color: var(--primary);
-        }
-
-        .cta .btn:hover {
-            background-color: var(--accent);
-            color: var(--white);
-        }
-
+        /* 页脚 */
         footer {
-            background-color: var(--dark);
-            color: var(--white);
-            padding: 3rem 0 1rem;
+            background-color: var(--github-darker);
+            padding: 4rem 0 2rem;
+            border-top: 1px solid var(--github-border);
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
         }
 
-        .footer-column h3 {
-            font-size: 1.3rem;
+        .footer-column h4 {
+            color: var(--github-white);
             margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--accent);
-        }
-
-        .footer-column p {
-            margin-bottom: 1rem;
+            font-size: 1.1rem;
         }
 
         .footer-links {
@@ -376,347 +407,538 @@
             margin-bottom: 0.8rem;
         }
 
-        .footer-links li a {
-            color: var(--light);
+        .footer-links a {
+            color: var(--github-text-light);
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: color 0.2s;
         }
 
-        .footer-links li a:hover {
-            color: var(--accent);
-            padding-left: 5px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: var(--white);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background-color: var(--accent);
-            transform: translateY(-5px);
+        .footer-links a:hover {
+            color: var(--github-white);
         }
 
         .copyright {
             text-align: center;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid var(--github-border);
+            color: var(--github-text-light);
+            font-size: 0.9rem;
         }
 
-        .mobile-menu {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        @media (max-width: 992px) {
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .initiatives-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
+        /* 响应式设计 */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5rem;
             }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            nav ul {
+
+            .nav-links {
                 display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--primary);
+            }
+
+            .hero {
+                padding: 120px 0 60px;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .cta-buttons {
                 flex-direction: column;
-                padding: 1rem 0;
-                text-align: center;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                align-items: center;
             }
-            
-            nav ul.active {
-                display: flex;
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+                margin-bottom: 1rem;
             }
-            
-            nav ul li {
-                margin: 0;
-                padding: 0.8rem 0;
-            }
-            
-            .mobile-menu {
-                display: block;
-            }
-            
-            .initiatives-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats {
+
+            .resource-grid {
                 grid-template-columns: 1fr;
             }
         }
 
-        /* Animation for stats counter */
-        .counter {
-            transition: all 0.5s ease;
+        /* 动画 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* 内容区域顶部留出导航栏空间 */
+        main {
+            margin-top: 70px;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container nav-container">
-            <div class="logo">
-                <i class="fas fa-seedling"></i>
-                <span>Green Network</span>
-            </div>
-            <nav>
-                <div class="mobile-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#initiatives">Initiatives</a></li>
-                    <li><a href="#get-involved">Get Involved</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container hero-content">
-            <h1>Protect Our Planet, Preserve Our Future</h1>
-            <p>Join the global movement to create a sustainable world through conservation, education, and community action.</p>
-            <a href="#get-involved" class="btn">Join Our Network</a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
+    <!-- 导航栏 -->
+    <nav class="navbar">
         <div class="container">
-            <div class="section-title">
-                <h2>About Green Network</h2>
-                <p>We are a global community dedicated to environmental protection and sustainable development.</p>
-            </div>
-            <div class="about-content">
-                <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Team planting trees">
-                </div>
-                <div class="about-text">
-                    <h3>Our Mission</h3>
-                    <p>Green Network is committed to creating a sustainable future by protecting natural ecosystems, promoting renewable energy, and empowering communities to take environmental action.</p>
-                    <p>Founded in 2010, we've grown from a small grassroots organization to an international network with over 50,000 members across 120 countries.</p>
-                    <p>Our approach combines scientific research, community engagement, and policy advocacy to address the most pressing environmental challenges of our time.</p>
-                    <a href="#" class="btn">Learn More</a>
-                </div>
-            </div>
-            <div class="stats">
-                <div class="stat-item">
-                    <i class="fas fa-tree"></i>
-                    <h3 class="counter" data-target="2500000">0</h3>
-                    <p>Trees Planted</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-users"></i>
-                    <h3 class="counter" data-target="50000">0</h3>
-                    <p>Active Members</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-globe-americas"></i>
-                    <h3 class="counter" data-target="120">0</h3>
-                    <p>Countries Reached</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-recycle"></i>
-                    <h3 class="counter" data-target="1500">0</h3>
-                    <p>Cleanup Projects</p>
-                </div>
-            </div>
+            <a href="#" class="logo">
+                <i class="fab fa-github"></i>
+                GitHub 指南
+            </a>
+            <ul class="nav-links">
+                <li><a href="#getting-started">入门指南</a></li>
+                <li><a href="#core-features">核心功能</a></li>
+                <li><a href="#advanced-topics">高级主题</a></li>
+                <li><a href="#resources">资源中心</a></li>
+            </ul>
         </div>
-    </section>
+    </nav>
 
-    <!-- Initiatives Section -->
-    <section class="initiatives" id="initiatives">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Initiatives</h2>
-                <p>Discover the key programs and projects we're implementing to protect our planet.</p>
-            </div>
-            <div class="initiatives-grid">
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://dialogue.earth/content/uploads/2021/04/lessons-from-the-rush-to-reforest-china-dialogue-2400x1599.jpg" alt="Reforestation">
-                    </div>
-                    <div class="initiative-content">
-                        <h3>Global Reforestation</h3>
-                        <p>Planting millions of trees worldwide to restore ecosystems, combat climate change, and protect biodiversity.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                </div>
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Ocean Conservation">
-                    </div>
-                    <div class="initiative-content">
-                        <h3>Ocean Conservation</h3>
-                        <p>Protecting marine ecosystems, reducing plastic pollution, and promoting sustainable fishing practices.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                </div>
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="Renewable Energy">
-                    </div>
-                    <div class="initiative-content">
-                        <h3>Renewable Energy</h3>
-                        <p>Promoting solar, wind, and other clean energy sources to reduce dependence on fossil fuels.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
+    <!-- 主内容 -->
+    <main>
+        <!-- 英雄区域 -->
+        <section class="hero">
+            <div class="container">
+                <h1>GitHub 完全指南</h1>
+                <p>从零开始，系统掌握全球领先的代码协作平台。无论你是初学者还是经验丰富的开发者，这里都有你需要的知识、工具和最佳实践。</p>
+                <div class="cta-buttons">
+                    <a href="#getting-started" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i> 立即开始学习
+                    </a>
+                    <a href="https://github.com" target="_blank" class="btn btn-secondary">
+                        <i class="fas fa-external-link-alt"></i> 访问 GitHub
+                    </a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CTA Section -->
-    <section class="cta" id="get-involved">
-        <div class="container">
-            <h2>Join Our Global Movement</h2>
-            <p>Together, we can create a sustainable future for generations to come. Every action counts, no matter how small.</p>
-            <a href="#" class="btn">Become a Member</a>
-        </div>
-    </section>
+        <!-- 入门指南 -->
+        <section id="getting-started" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>🚀 入门与基础</h2>
+                    <p>构建核心概念，建立正确的版本控制思维，开启你的GitHub协作之旅</p>
+                </div>
 
-    <!-- Footer -->
-    <footer id="contact">
+                <div class="learning-path">
+                    <div class="path-header">
+                        <div class="path-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <h3 class="path-title">Git与GitHub基础</h3>
+                            <p class="path-subtitle">基于 Salesforce Trailhead 课程体系 | 适合零基础初学者</p>
+                        </div>
+                    </div>
+                    <div class="path-content">
+                        <p>这个模块将帮助你理解为什么版本控制是现代软件开发的核心，以及GitHub如何在开发周期中扮演关键角色。</p>
+                        <ul class="module-list">
+                            <li><strong>版本控制的重要性</strong> - 理解为什么需要版本控制系统</li>
+                            <li><strong>GitHub在开发中的作用</strong> - 探索GitHub在完整开发流程中的位置</li>
+                            <li><strong>GitHub协作探索</strong> - 学习如何在GitHub上与团队协作</li>
+                            <li><strong>GitHub工作流实践</strong> - 掌握标准的GitHub协作工作流</li>
+                            <li><strong>Git历史记录管理</strong> - 学习如何查看、修改和管理提交历史</li>
+                        </ul>
+                    </div>
+                    <div class="path-footer">
+                        <span class="badge badge-beginner">初学者</span>
+                        <a href="#" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">
+                            <i class="fas fa-book-open"></i> 开始学习此路径
+                        </a>
+                    </div>
+                </div>
+
+                <div class="learning-path">
+                    <div class="path-header">
+                        <div class="path-icon">
+                            <i class="fas fa-code-branch"></i>
+                        </div>
+                        <div>
+                            <h3 class="path-title">从注册到协作的全流程</h3>
+                            <p class="path-subtitle">基于 NextLink 新手教程 | 手把手实操指导</p>
+                        </div>
+                    </div>
+                    <div class="path-content">
+                        <p>跟随这个详细的逐步指南，从创建GitHub账户到完成你的第一次Pull Request。</p>
+                        <ul class="module-list">
+                            <li><strong>Git与GitHub的区别</strong> - 澄清两个核心概念的关系</li>
+                            <li><strong>环境设置</strong> - 注册GitHub账户、安装和配置Git</li>
+                            <li><strong>基础Git操作</strong> - init, clone, add, commit, push, pull 命令详解</li>
+                            <li><strong>仓库管理</strong> - 创建、配置和管理代码仓库</li>
+                            <li><strong>协作工作流</strong> - 分支创建、合并、解决冲突和Pull Request流程</li>
+                        </ul>
+                    </div>
+                    <div class="path-footer">
+                        <span class="badge badge-beginner">初学者</span>
+                        <a href="#" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">
+                            <i class="fas fa-play-circle"></i> 开始实战演练
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 核心功能 -->
+        <section id="core-features" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>⚙️ 核心功能与实践</h2>
+                    <p>深入探索GitHub的强大功能，提升开发效率与协作体验</p>
+                </div>
+
+                <div class="tab-container">
+                    <div class="tab-nav">
+                        <button class="tab-btn active" data-tab="actions">GitHub Actions</button>
+                        <button class="tab-btn" data-tab="copilot">GitHub Copilot</button>
+                        <button class="tab-btn" data-tab="workflow">协作工作流</button>
+                        <button class="tab-btn" data-tab="security">安全功能</button>
+                    </div>
+
+                    <div id="actions" class="tab-content active">
+                        <div class="learning-path">
+                            <div class="path-header">
+                                <div class="path-icon">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div>
+                                    <h3 class="path-title">GitHub Actions 自动化工作流</h3>
+                                    <p class="path-subtitle">基于 Microsoft Learn 培训路径 | 自动化你的开发流程</p>
+                                </div>
+                            </div>
+                            <div class="path-content">
+                                <p>GitHub Actions 允许你自动化、自定义和执行软件开发工作流。你可以创建构建、测试和部署流水线，完全集成在GitHub中。</p>
+                                <ul class="module-list">
+                                    <li><strong>工作流基础</strong> - 理解YAML语法和基本概念</li>
+                                    <li><strong>事件触发</strong> - 配置push、pull request等事件触发器</li>
+                                    <li><strong>作业与步骤</strong> - 创建工作流中的作业和执行步骤</li>
+                                    <li><strong>Actions市场</strong> - 使用和创建可重用的Actions</li>
+                                    <li><strong>CI/CD流水线</strong> - 构建完整的持续集成和部署流程</li>
+                                    <li><strong>自托管运行器</strong> - 在自有基础设施上运行工作流</li>
+                                </ul>
+                            </div>
+                            <div class="path-footer">
+                                <span class="badge badge-intermediate">中级</span>
+                                <a href="https://docs.github.com/actions" target="_blank" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">
+                                    <i class="fas fa-external-link-alt"></i> 查看官方文档
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="copilot" class="tab-content">
+                        <div class="learning-path">
+                            <div class="path-header">
+                                <div class="path-icon">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <div>
+                                    <h3 class="path-title">GitHub Copilot AI编程助手</h3>
+                                    <p class="path-subtitle">AI驱动的结对编程体验 | 提升编码效率</p>
+                                </div>
+                            </div>
+                            <div class="path-content">
+                                <p>GitHub Copilot 是一个AI配对程序员，它可以根据上下文自动生成代码建议，支持多种编程语言和框架。</p>
+                                <ul class="module-list">
+                                    <li><strong>Copilot工作原理</strong> - 了解AI模型如何生成代码建议</li>
+                                    <li><strong>安装与配置</strong> - 在主流编辑器中安装Copilot扩展</li>
+                                    <li><strong>使用技巧</strong> - 通过注释和上下文获得更好的建议</li>
+                                    <li><strong>多语言支持</strong> - 探索支持的各种编程语言和框架</li>
+                                    <li><strong>最佳实践</strong> - 如何有效利用Copilot提高生产力</li>
+                                    <li><strong>安全与合规</strong> - 了解代码建议的安全考虑因素</li>
+                                </ul>
+                            </div>
+                            <div class="path-footer">
+                                <span class="badge badge-intermediate">中级</span>
+                                <a href="https://docs.github.com/copilot" target="_blank" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">
+                                    <i class="fas fa-external-link-alt"></i> 查看官方文档
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h4 class="resource-title">项目管理工具</h4>
+                        <p class="resource-desc">使用Projects、Issues和Milestones有效管理项目进度和任务分配。</p>
+                        <a href="https://docs.github.com/issues" target="_blank" class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">了解更多</a>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h4 class="resource-title">代码审查与协作</h4>
+                        <p class="resource-desc">通过Pull Request、代码审查和讨论区实现高效的团队协作。</p>
+                        <a href="https://docs.github.com/pull-requests" target="_blank" class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">了解更多</a>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4 class="resource-title">分析与洞察</h4>
+                        <p class="resource-desc">利用Insights和Traffic数据了解项目健康状况和社区参与度。</p>
+                        <a href="https://docs.github.com/repositories/viewing-activity-and-data-for-your-repository" target="_blank" class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">了解更多</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 高级主题 -->
+        <section id="advanced-topics" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>🛡️ 高级主题与认证</h2>
+                    <p>面向团队管理员和希望深入掌握GitHub的专业开发者</p>
+                </div>
+
+                <div class="learning-path">
+                    <div class="path-header">
+                        <div class="path-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div>
+                            <h3 class="path-title">GitHub 高级安全与管理</h3>
+                            <p class="path-subtitle">基于 Microsoft Learn 企业级培训路径 | 保护你的代码和团队</p>
+                        </div>
+                    </div>
+                    <div class="path-content">
+                        <p>为组织提供企业级的安全功能和管理选项，确保代码安全并符合合规要求。</p>
+                        <ul class="module-list">
+                            <li><strong>代码安全扫描</strong> - 自动识别漏洞和敏感信息泄露</li>
+                            <li><strong>依赖关系管理</strong> - 跟踪和更新项目依赖，修复安全漏洞</li>
+                            <li><strong>秘密检测</strong> - 防止API密钥和密码等敏感信息泄露</li>
+                            <li><strong>组织与团队管理</strong> - 配置SAML SSO、团队结构和权限</li>
+                            <li><strong>审计日志与合规</strong> - 监控组织活动，满足合规要求</li>
+                            <li><strong>企业级部署选项</strong> - GitHub Enterprise Server 和 Cloud</li>
+                        </ul>
+                    </div>
+                    <div class="path-footer">
+                        <span class="badge badge-advanced">高级</span>
+                        <a href="https://docs.github.com/organizations" target="_blank" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">
+                            <i class="fas fa-external-link-alt"></i> 查看组织文档
+                        </a>
+                    </div>
+                </div>
+
+                <div class="learning-path">
+                    <div class="path-header">
+                        <div class="path-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div>
+                            <h3 class="path-title">GitHub 官方认证</h3>
+                            <p class="path-subtitle">验证你的技能，提升职业竞争力</p>
+                        </div>
+                    </div>
+                    <div class="path-content">
+                        <p>GitHub认证计划帮助你验证Git和GitHub技能，获得行业认可的证书。</p>
+                        <ul class="module-list">
+                            <li><strong>认证考试介绍</strong> - 了解考试结构、题型和考试要求</li>
+                            <li><strong>考试范围与大纲</strong> - Git核心概念、GitHub协作功能、最佳实践</li>
+                            <li><strong>备考资源</strong> - 官方学习材料、练习题和模拟考试</li>
+                            <li><strong>注册与考试流程</strong> - 如何注册、安排和参加在线考试</li>
+                            <li><strong>证书维护与更新</strong> - 证书有效期和续期要求</li>
+                            <li><strong>职业发展价值</strong> - 认证对职业发展的帮助和认可度</li>
+                        </ul>
+                    </div>
+                    <div class="path-footer">
+                        <span class="badge badge-advanced">高级</span>
+                        <a href="https://docs.github.com/certifications" target="_blank" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">
+                            <i class="fas fa-external-link-alt"></i> 了解认证详情
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 资源中心 -->
+        <section id="resources" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>📚 官方资源中心</h2>
+                    <p>直达最权威的GitHub官方文档和学习平台</p>
+                </div>
+
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h4 class="resource-title">GitHub 官方文档</h4>
+                        <p class="resource-desc">最全面、最权威的GitHub知识库，涵盖所有功能详细说明。</p>
+                        <a href="https://docs.github.com" target="_blank" class="btn btn-primary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">访问文档</a>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h4 class="resource-title">GitHub Skills</h4>
+                        <p class="resource-desc">免费的交互式实操课程，通过浏览器边学边练。</p>
+                        <a href="https://skills.github.com" target="_blank" class="btn btn-primary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">开始学习</a>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-blog"></i>
+                        </div>
+                        <h4 class="resource-title">GitHub 博客</h4>
+                        <p class="resource-desc">获取最新功能更新、技术深度解析和社区故事。</p>
+                        <a href="https://github.blog" target="_blank" class="btn btn-primary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">阅读博客</a>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-tv"></i>
+                        </div>
+                        <h4 class="resource-title">GitHub YouTube</h4>
+                        <p class="resource-desc">视频教程、功能演示和会议演讲。</p>
+                        <a href="https://www.youtube.com/github" target="_blank" class="btn btn-primary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">观看视频</a>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h4 class="resource-title">API 文档</h4>
+                        <p class="resource-desc">REST API 和 GraphQL API 完整参考，用于集成开发。</p>
+                        <a href="https://docs.github.com/rest" target="_blank" class="btn btn-primary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">查看API</a>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <h4 class="resource-title">GitHub Desktop</h4>
+                        <p class="resource-desc">图形化客户端使用指南，适合不习惯命令行的用户。</p>
+                        <a href="https://docs.github.com/desktop" target="_blank" class="btn btn-primary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">了解详情</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Green Network</h3>
-                    <p>We are dedicated to protecting our planet through collaborative action, education, and sustainable solutions.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
+                <div>
+                    <h4>GitHub 指南</h4>
                     <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#initiatives">Initiatives</a></li>
-                        <li><a href="#get-involved">Get Involved</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#getting-started">入门指南</a></li>
+                        <li><a href="#core-features">核心功能</a></li>
+                        <li><a href="#advanced-topics">高级主题</a></li>
+                        <li><a href="#resources">资源中心</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
-                    <h3>Our Programs</h3>
+                <div>
+                    <h4>官方资源</h4>
                     <ul class="footer-links">
-                        <li><a href="#">Reforestation</a></li>
-                        <li><a href="#">Ocean Cleanup</a></li>
-                        <li><a href="#">Wildlife Protection</a></li>
-                        <li><a href="#">Climate Education</a></li>
-                        <li><a href="#">Sustainable Agriculture</a></li>
+                        <li><a href="https://github.com" target="_blank">GitHub 官网</a></li>
+                        <li><a href="https://docs.github.com" target="_blank">官方文档</a></li>
+                        <li><a href="https://skills.github.com" target="_blank">GitHub Skills</a></li>
+                        <li><a href="https://github.blog" target="_blank">GitHub 博客</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Copper Creek Drive, New York</p>
-                    <p><i class="fas fa-phone"></i> +1 (312) 171-0771</p>
-                    <p><i class="fas fa-envelope"></i> support@greennetwork.org</p>
+                <div>
+                    <h4>学习路径</h4>
+                    <ul class="footer-links">
+                        <li><a href="#getting-started">初学者路径</a></li>
+                        <li><a href="#core-features">中级开发者路径</a></li>
+                        <li><a href="#advanced-topics">高级/管理员路径</a></li>
+                        <li><a href="#resources">官方认证准备</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>社区与支持</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://github.community" target="_blank">社区论坛</a></li>
+                        <li><a href="https://support.github.com" target="_blank">支持中心</a></li>
+                        <li><a href="https://www.githubstatus.com" target="_blank">服务状态</a></li>
+                        <li><a href="https://github.com/contact" target="_blank">联系GitHub</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 Green Network. All rights reserved.</p>
+                <p>本网站为GitHub学习指南，GitHub是GitHub, Inc.的注册商标。数据统计截至2023年。</p>
+                <p>© 2023 GitHub完全指南 | 设计用于教育目的 | 基于Trailhead、Microsoft Learn等平台内容整合</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile Menu Toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            document.querySelector('nav ul').classList.toggle('active');
-        });
-
-        // Counter Animation
-        function animateCounters() {
-            const counters = document.querySelectorAll('.counter');
-            const speed = 200; // The lower the slower
-            
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
-                
-                const inc = target / speed;
-                
-                if(count < target) {
-                    counter.innerText = Math.ceil(count + inc);
-                    setTimeout(animateCounters, 1);
-                } else {
-                    counter.innerText = target;
-                }
-            });
-        }
-
-        // Initialize counters when page loads
-        window.addEventListener('load', animateCounters);
-
-        // Smooth scrolling for navigation links
+        // 平滑滚动到锚点
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
-                e.preventDefault();
+                const href = this.getAttribute('href');
                 
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
+                if (href === '#') return;
                 
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
+                const targetElement = document.querySelector(href);
+                if (targetElement) {
+                    e.preventDefault();
                     window.scrollTo({
                         top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
-                    
-                    document.querySelector('nav ul').classList.remove('active');
                 }
             });
         });
+
+        // 选项卡切换
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // 移除所有活动类
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                // 添加活动类到当前选项卡
+                btn.classList.add('active');
+                const tabId = btn.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // 导航栏滚动效果
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // 页面加载时的初始动画
+        document.addEventListener('DOMContentLoaded', () => {
+            const learningPaths = document.querySelectorAll('.learning-path');
+            learningPaths.forEach((path, index) => {
+                path.style.opacity = '0';
+                path.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    path.style.transition = 'opacity 0.6s, transform 0.6s';
+                    path.style.opacity = '1';
+                    path.style.transform = 'translateY(0)';
+                }, 100 + (index * 100));
+            });
+        });
+
+        // 移动端菜单切换 (如果需要)
+        const setupMobileMenu = () => {
+            if (window.innerWidth <= 768) {
+                const navbar = document.querySelector('.navbar');
+                const navLinks = document.querySelector('.nav-links');
+                
+                // 可以在这里添加移动端菜单切换逻辑
+                // 例如创建一个汉堡菜单按钮
+            }
+        };
+
+        window.addEventListener('resize', setupMobileMenu);
+        setupMobileMenu();
     </script>
 </body>
-
 </html>
